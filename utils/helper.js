@@ -73,3 +73,15 @@ module.exports.sendMessage = async (page, message) => {
   await page.keyboard.press("Enter");
   await page.waitFor(5000);
 };
+
+/**
+ * Encipher string and return the result
+ * @param {string} str crypto string
+ */
+module.exports.md5 = (str) => {
+  const crypto = require("crypto");
+  const md5 = crypto.createHash("md5");
+  md5.update(str, "utf8");
+
+  return md5.digest("hex").toUpperCase();
+};
